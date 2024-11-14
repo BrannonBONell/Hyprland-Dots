@@ -18,11 +18,11 @@ if [[ $# -lt 1 ]] || [[ ! -d $1   ]]; then
 fi
 
 # Edit below to control the images transition
-export SWWW_TRANSITION_FPS=60
+export SWWW_TRANSITION_FPS=200
 export SWWW_TRANSITION_TYPE=simple
 
 # This controls (in seconds) when to switch to the next image
-INTERVAL=1800
+INTERVAL=60
 
 while true; do
 	find "$1" \
@@ -31,7 +31,7 @@ while true; do
 		done \
 		| sort -n | cut -d':' -f2- \
 		| while read -r img; do
-			swww img -o $focused_monitor "$img" 
+			swww img --resize "fit" --fill-color 300040 -o $focused_monitor "$img" 
 			$wallust_refresh
 			sleep $INTERVAL
 			

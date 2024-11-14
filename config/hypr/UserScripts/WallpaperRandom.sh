@@ -12,11 +12,12 @@ RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
 
 
 # Transition config
-FPS=60
-TYPE="random"
-DURATION=1
+FPS=200
+TYPE="simple"
+FIT="fit"
+FILL=300040
 BEZIER=".43,1.19,1,.4"
-SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
+SWWW_PARAMS="--resize $FIT --fill-color $FILL --transition-fps $FPS --transition-type $TYPE --transition-bezier $BEZIER"
 
 
 swww query || swww-daemon --format xrgb && swww img -o $focused_monitor ${RANDOMPICS} $SWWW_PARAMS

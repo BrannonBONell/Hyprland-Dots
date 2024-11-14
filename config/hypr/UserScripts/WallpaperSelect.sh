@@ -9,11 +9,12 @@ SCRIPTSDIR="$HOME/.config/hypr/scripts"
 # variables
 focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 # swww transition config
-FPS=60
-TYPE="any"
-DURATION=2
+FPS=200
+TYPE="simple"
 BEZIER=".43,1.19,1,.4"
-SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
+FIT="fit"
+FILL=300040
+SWWW_PARAMS="--resize $FIT --fill-color $FILL --transition-fps $FPS --transition-type $TYPE"
 
 # Check if swaybg is running
 if pidof swaybg > /dev/null; then
